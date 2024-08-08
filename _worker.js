@@ -1621,7 +1621,7 @@ const updateDataset = async (env, Settings) => {
     const vlessConfig = Settings?.get('outProxy');
 
     const proxySettings = {
-        remoteDNS: Settings ? Settings.get('remoteDNS') : currentProxySettings?.remoteDNS || 'https://94.140.14.14/dns-query',
+        remoteDNS: Settings ? Settings.get('remoteDNS') : currentProxySettings?.remoteDNS || 'https://dns.google/dns-query',
         localDNS: Settings ? Settings.get('localDNS') : currentProxySettings?.localDNS || '8.8.8.8',
         lengthMin: Settings ? Settings.get('fragmentLengthMin') : currentProxySettings?.lengthMin || '100',
         lengthMax: Settings ? Settings.get('fragmentLengthMax') : currentProxySettings?.lengthMax || '200',
@@ -3121,7 +3121,7 @@ const singboxConfigTemp = {
     dns: {
         servers: [
             {
-                address: "https://8.8.8.8/dns-query",
+                address: "https://dns.google/dns-query",
                 address_resolver: "dns-direct",
                 strategy: "prefer_ipv4",
                 tag: "dns-remote"
