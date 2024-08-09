@@ -10,8 +10,8 @@ import { connect } from 'cloudflare:sockets';
 let userID = 'bc97f674-c578-4940-9234-0a1da46041b9';
 
 // https://www.nslookup.io/domains/bpb.yousef.isegaro.com/dns-records/
-const proxyIPs= ['proxyip.us.fxxk.dedyn.io'];
-// [proxyip.oracle.fxxk.dedyn.io,proxyip.digitalocean.fxxk.dedyn.io,proxyip.us.fxxk.dedyn.io]
+const proxyIPs= [proxyip.us.fxxk.dedyn.io'];
+
 const defaultHttpPorts = ['80', '8080', '2052', '2082', '2086', '2095', '8880'];
 const defaultHttpsPorts = ['443', '8443', '2053', '2083', '2087', '2096'];
 
@@ -215,7 +215,7 @@ export default {
 
                     default:
                         // return new Response('Not found', { status: 404 });
-                        url.hostname = 'cnminato123.serv00.net';
+                        url.hostname = 'www.speedtest.net';
                         url.protocol = 'https:';
                         request = new Request(url, request);
                         return await fetch(request);
@@ -807,7 +807,7 @@ const getNormalConfigs = async (env, hostName, client) => {
     const resolved = await resolveDNS(hostName);
     const Addresses = [
         hostName,
-        'cnminato123.serv00.net',
+        'www.speedtest.net',
         ...resolved.ipv4,
         ...resolved.ipv6.map((ip) => `[${ip}]`),
         ...(cleanIPs ? cleanIPs.split(',') : [])
@@ -1045,7 +1045,7 @@ const getFragmentConfigs = async (env, hostName, client) => {
     const resolved = await resolveDNS(hostName);
     const Addresses = [
         hostName,
-        "cnminato123.serv00.net",
+        "www.speedtest.net",
         ...resolved.ipv4,
         ...resolved.ipv6.map((ip) => `[${ip}]`),
         ...(cleanIPs ? cleanIPs.split(",") : [])
@@ -1222,7 +1222,7 @@ const getSingboxConfig = async (env, hostName) => {
     const resolved = await resolveDNS(hostName);
     const Addresses = [
         hostName,
-        "cnminato123.serv00.net",
+        "www.speedtest.net",
         ...resolved.ipv4,
         ...resolved.ipv6.map((ip) => `[${ip}]`),
         ...(cleanIPs ? cleanIPs.split(",") : [])
@@ -1505,7 +1505,7 @@ const buildDNSObject = async (remoteDNS, localDNS, blockAds, bypassIran, blockPo
     if (isWorkerLess) {
         const resolvedDOH = await resolveDNS('cloudflare-dns.com');
         const resolvedCloudflare = await resolveDNS('cloudflare.com');
-        const resolvedCLDomain = await resolveDNS('cnminato123.serv00.net.cdn.cloudflare.net');
+        const resolvedCLDomain = await resolveDNS('www.speedtest.net.cdn.cloudflare.net');
         const resolvedCFNS_1 = await resolveDNS('ben.ns.cloudflare.com');
         const resolvedCFNS_2 = await resolveDNS('lara.ns.cloudflare.com');
         dnsObject.hosts['cloudflare-dns.com'] = [
@@ -1621,7 +1621,7 @@ const updateDataset = async (env, Settings) => {
     const vlessConfig = Settings?.get('outProxy');
 
     const proxySettings = {
-        remoteDNS: Settings ? Settings.get('remoteDNS') : currentProxySettings?.remoteDNS || 'https://dns.google/dns-query',
+        remoteDNS: Settings ? Settings.get('remoteDNS') : currentProxySettings?.remoteDNS || 'https://94.140.14.14/dns-query',
         localDNS: Settings ? Settings.get('localDNS') : currentProxySettings?.localDNS || '8.8.8.8',
         lengthMin: Settings ? Settings.get('fragmentLengthMin') : currentProxySettings?.lengthMin || '100',
         lengthMax: Settings ? Settings.get('fragmentLengthMax') : currentProxySettings?.lengthMax || '200',
@@ -3121,7 +3121,7 @@ const singboxConfigTemp = {
     dns: {
         servers: [
             {
-                address: "https://dns.google/dns-query",
+                address: "https://8.8.8.8/dns-query",
                 address_resolver: "dns-direct",
                 strategy: "prefer_ipv4",
                 tag: "dns-remote"
